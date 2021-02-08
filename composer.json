@@ -1,0 +1,15 @@
+{
+    "name": "benjamingirard/scrap",
+    "authors": [
+        {
+            "name": "benaor",
+            "email": "benjamingirard25@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Router\\": "routes/"
+        }
+    },
+    "require": {}
+}
