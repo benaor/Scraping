@@ -2,15 +2,15 @@
 
 namespace App\Controllers;
 
-class ScrapingController {
+class ScrapingController extends Controller {
 
     public function index()
     { 
-        echo "Page de scraping";
+        return $this->view('scraping.index');
     }
 
     public function show(int $id)
     {
-        echo "page du scraping numero ". $id;
+        return $this->view('scraping.show', compact('id'));
     }
 }

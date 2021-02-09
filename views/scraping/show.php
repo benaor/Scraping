@@ -1,0 +1,1 @@
+<h1>Scrap numero <?= $params['id'] ?> </h1>
