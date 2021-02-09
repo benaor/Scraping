@@ -2,6 +2,7 @@
 
 namespace Router;
 
+use Database\DBConnexion;
 use App\Controllers\ScrapingController;
 
 class Route
@@ -36,7 +37,7 @@ class Route
 
         $ns = "App\\Controllers\\".$params[0];
 
-        $controller = new $ns();
+        $controller = new $ns(new DBConnexion());
 
         $method = $params[1];
 
