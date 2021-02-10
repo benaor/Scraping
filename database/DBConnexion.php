@@ -14,10 +14,10 @@ class DBConnexion {
 
     public function __constuct(string $dbname, string $host, string $username, string $password)
     {
-        $this->dbname = $dbname ;
-        $this->host = $host ;
-        $this->username = $username ;
-        $this->password = $password ;
+        $this->dbname = $dbname;
+        $this->host = $host;
+        $this->username = $username;
+        $this->password = $password;
     }
 
     public function getPDO() : PDO

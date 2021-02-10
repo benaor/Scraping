@@ -10,7 +10,9 @@ define('SCRIPTS', dirname($_SERVER['SCRIPT_NAME']). DIRECTORY_SEPARATOR );
 
 $router = new Router($_GET['url']);
 
-$router->get('/scrap', 'ScrapingController@index');
+$router->get('/home', 'ScrapingController@home');
+$router->get('/scrap', 'ScrapingController@scraping');
+$router->get('/history', 'ScrapingController@history');
 $router->get('/scrap/:id', 'ScrapingController@show');
 
 $router->run();
