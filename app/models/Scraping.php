@@ -4,5 +4,5 @@ namespace App\Models;
 
 class Scraping extends Model
 {
-    private 
+    protected $table = 'scraping';
 }

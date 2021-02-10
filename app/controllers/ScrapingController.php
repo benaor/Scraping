@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\Scraping;
-use Database\DBConnexion;
 
 class ScrapingController extends Controller {
 
@@ -20,21 +19,17 @@ class ScrapingController extends Controller {
     //Correspond a l'index
     public function history(){
 
-        $scrap = new Scraping;
-        $scrap->all(); 
-
-        $req = $this->db->getPDO()->query('SELECT * FROM scraping ORDER BY id ASC');
-        $scraps = $req->fetchAll(); 
+        $data = new Scraping($this->getDb());
+        $scraps = $data->findAll(); 
 
         return $this->view('scraping.history', compact('scraps'));
     }
 
     public function show(int $id)
     {
-        $req = $this->db->getPDO()->prepare("SELECT * FROM scraping WHERE id = ?");
-        $req->execute([$id]);
-        $scrap = $req->fetch();
-
+        $data = new Scraping($this->getDb());
+        $scrap = $data->findById($id); 
+        
         return $this->view('scraping.show', compact('scrap'));
     }
 }
