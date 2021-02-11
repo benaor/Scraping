@@ -3,7 +3,6 @@
 namespace Router;
 
 use Database\DBConnexion;
-use App\Controllers\ScrapingController;
 
 class Route
 {
@@ -35,38 +34,12 @@ class Route
     {
         $params = explode('@', $this->action);
 
-        $ns = "App\\Controllers\\".$params[0];
+        $ns = "App\\Controllers\\" . $params[0];
 
-        $controller = new $ns(new DBConnexion());
+        $controller = new $ns(new DBConnexion);
 
         $method = $params[1];
 
         return isset($this->matches[1]) ? $controller->$method($this->matches[1]) : $controller->$method();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// $params = explode('@', $this->action);
-// $controller = new ScrapingController;
-// // $controller = new $params[0]();
-// $method = $params[1];
-// var_dump(
-// call_user_func($controller)
-// );
-// return isset($this->matches[1]) ? $controller->$method($this->matches[1]) : $controller->$method();
-// }

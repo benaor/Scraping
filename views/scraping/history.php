@@ -4,11 +4,12 @@
 <?php foreach ($params['scraps'] as $scrap) { ?>
 
 <div class="card mb-3">
-    <h2><?= $scrap->title ?></h2>
-    <p><?= $scrap->category ?></p>
-    <p><?= $scrap->url ?></p>
-    <p><?= $scrap->path ?></p>
-    <a href="scrap/<?= $scrap->id ?>" class="btn btn-success">Voir le details</a>
+    <h2><?= $scrap->getTitle() ?></h2>
+    <p><?= $scrap->getCategory() ?></p>
+    <p><?= $scrap->getUrl() ?></p>
+    <p><?= $scrap->getPath() ?></p>
+    <p><?= $scrap->getCreatedAt() ?></p>
+    <a href="scrap/<?= $scrap->getId() ?>" class="btn btn-success">Voir le details</a>
 </div>
 
 <?php } ?>

@@ -6,10 +6,10 @@ use PDO;
 
 class DBConnexion {
 
-    private $dbname = "scraping";
-    private $host = "localhost:3306";
-    private $username = "root";
-    private $password = "root";
+    private $dbname = DB_NAME;
+    private $host = DB_HOST;
+    private $username = DB_USER;
+    private $password = DB_PWD;
     private $pdo;
 
     public function __constuct(string $dbname, string $host, string $username, string $password)

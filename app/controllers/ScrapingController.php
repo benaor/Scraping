@@ -18,10 +18,8 @@ class ScrapingController extends Controller {
  
     //Correspond a l'index
     public function history(){
-
         $data = new Scraping($this->getDb());
         $scraps = $data->findAll(); 
-
         return $this->view('scraping.history', compact('scraps'));
     }
 
