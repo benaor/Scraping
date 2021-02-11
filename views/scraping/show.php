@@ -1,8 +1,15 @@
-<h1>Scrap numero <?= $params['scrap']->id ?> </h1>
+<h1>Scrap numero <?= $params['scrap']->getId() ?> </h1>
 
-<p>titre : <?= $params['scrap']->title ?></p>
-<p>titre : <?= $params['scrap']->url ?></p>
-<p>titre : <?= $params['scrap']->path ?></p>
+<p>titre : <?= $params['scrap']->getTitle() ?></p>
+<p>titre : <?= $params['scrap']->getUrl() ?></p>
+<p>titre : <?= $params['scrap']->getPath() ?></p>
+
+
+<?php foreach($params['scrap']->getCategory() as $category){ ?>
+        <span class="badge badge-info col-1">
+            <?= $category->name; ?>
+        </span>
+    <?php } ?> 
 
 
 

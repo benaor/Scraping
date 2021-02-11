@@ -5,7 +5,15 @@
 
 <div class="card mb-3">
     <h2><?= $scrap->getTitle() ?></h2>
-    <p><?= $scrap->getCategory() ?></p>
+
+    <?php foreach($scrap->getCategory() as $category){ ?>
+        <span class="badge badge-info col-1">
+            <?= $category->name; ?>
+        </span>
+    <?php } ?> 
+
+
+    <!-- <p><?= $scrap->getCategory() ?></p> -->
     <p><?= $scrap->getUrl() ?></p>
     <p><?= $scrap->getPath() ?></p>
     <p><?= $scrap->getCreatedAt() ?></p>

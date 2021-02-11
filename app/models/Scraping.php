@@ -58,26 +58,6 @@ class Scraping extends Model
     }
 
     /**
-     * Get the value of category
-     */ 
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * Set the value of category
-     *
-     * @return  self
-     */ 
-    public function setCategory($category)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
      * Get the value of url
      */ 
     public function getUrl()
@@ -156,5 +136,15 @@ class Scraping extends Model
         $this->created_at = $created_at;
 
         return $this;
+    }
+
+    public function getCategory()
+    {
+        $sql = 'SELECT c.* FROM category c 
+        INNER JOIN scraping_category sc ON sc.category_id = c.id
+        INNER JOIN scraping s ON sc.scraping_id = s.id
+        WHERE s.id = ?';
+
+        return $this->query($sql, $this->getId());
     }
 }
