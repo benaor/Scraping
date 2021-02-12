@@ -39,6 +39,13 @@ abstract class Model
         $method = is_null($param) ? "query" : "prepare";
         $fetch  = is_null($single) ? "fetchAll" : "fetch";
 
+        if(strpos($sql, 'DELETE') === 0 || strpos($sql, 'UPDATE') === 0 || strpos($sql, 'CREATE') === 0 ){
+
+            $req = $this->db->getPDO()->$method($sql);
+            $req->setFetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db] );
+            return $req->execute([$param]);
+    
+        }
 
         $req = $this->db->getPDO()->$method($sql);
         $req->setFetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db] );
@@ -49,5 +56,10 @@ abstract class Model
             $req->execute([$param]);
             return $req->$fetch();
         }
+    }
+
+    public function destroy(int $id): bool
+    {
+        return $this->query('DELETE FROM '. $this->table .' WHERE id = ?', $id);
     }
 }
