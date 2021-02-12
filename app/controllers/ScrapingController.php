@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Category;
 use App\Models\Scraping;
 
 class ScrapingController extends Controller {
@@ -30,4 +31,13 @@ class ScrapingController extends Controller {
         
         return $this->view('scraping.show', compact('scrap'));
     }
+
+    public function category(int $id)
+    {
+        $data = new Category($this->getDb());
+        $category = $data->findById($id);
+
+        return $this->view('scraping.category', compact('category')); 
+    }
+
 }

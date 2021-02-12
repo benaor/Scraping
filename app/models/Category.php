@@ -71,4 +71,13 @@ class Category extends Model
 
         return $this;
     }
+
+    public function getScraps()
+    {
+        $sql = "SELECT s.* FROM scraping s 
+                INNER JOIN scraping_category sc ON sc.scraping_id = s.id
+                WHERE sc.category_id = ?
+                ";
+        return $this->query($sql, $this->getId());
+    }
 }
