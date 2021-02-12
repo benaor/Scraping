@@ -145,6 +145,6 @@ class Scraping extends Model
         INNER JOIN scraping s ON sc.scraping_id = s.id
         WHERE s.id = ?';
 
-        return $this->query($sql, $this->getId());
+        return $this->query($sql, [$this->getId()]);
     }
 }

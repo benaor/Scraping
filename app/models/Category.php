@@ -78,6 +78,6 @@ class Category extends Model
                 INNER JOIN scraping_category sc ON sc.scraping_id = s.id
                 WHERE sc.category_id = ?
                 ";
-        return $this->query($sql, $this->getId());
+        return $this->query($sql, [$this->getId()]);
     }
 }

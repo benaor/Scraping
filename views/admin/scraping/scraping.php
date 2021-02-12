@@ -18,7 +18,7 @@
                 <td> <?= $scrap->getTitle() ?> </td>
                 <td> <?= $scrap->getCreatedAt() ?> </td>
                 <td>
-                    <a href="/projet-CDA/scrap/public/admin/scraping/delete/<?= $scrap->getId() ?>" class="btn btn-warning">Modifier</a>
+                    <a href="/projet-CDA/scrap/public/admin/scraping/edit/<?= $scrap->getId() ?>" class="btn btn-warning">Modifier</a>
                     <form action="/projet-CDA/scrap/public/admin/scraping/delete/<?= $scrap->getId() ?>" method="POST" class="d-inline">
                         <button type="submit" class="btn btn-danger">Supprimer</button>
                     </form>

@@ -21,8 +21,10 @@ $router->get('/history', 'ScrapingController@history');
 $router->get('/scrap/:id', 'ScrapingController@show');
 $router->get('/category/:id', 'ScrapingController@category');
 $router->get('/admin/scraping', 'AdminScrapController@scraping');
+$router->get('/admin/scraping/edit/:id', 'AdminScrapController@edit');
 
 //Post
+$router->post('/admin/scraping/edit/:id', 'AdminScrapController@update');
 $router->post('/admin/scraping/delete/:id', 'AdminScrapController@delete');
 
 try {
