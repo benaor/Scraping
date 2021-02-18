@@ -20,10 +20,13 @@
             <ul class="navbar-nav mr-auto w-100 d-flex justify-content-between">
                 <div class="row">
                     <li class="nav-item">
-                        <a class="nav-link" href="home">Accueil</a>
+                        <a class="nav-link" href="/projet-CDA/scrap/public/home">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="scrap">Scraping</a>
+                        <a class="nav-link" href="/projet-CDA/scrap/public/scrap">Scraping</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/projet-CDA/scrap/public/history">Historique</a>
                     </li>
                 </div>
                 <li>

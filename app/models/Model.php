@@ -39,7 +39,7 @@ abstract class Model
         $method = is_null($param) ? "query" : "prepare";
         $fetch  = is_null($single) ? "fetchAll" : "fetch";
 
-        if(strpos($sql, 'DELETE') === 0 || strpos($sql, 'UPDATE') === 0 || strpos($sql, 'CREATE') === 0 ){
+        if(strpos($sql, 'DELETE') === 0 || strpos($sql, 'UPDATE') === 0 || strpos($sql, 'INSERT') === 0 ){
 
             $req = $this->db->getPDO()->$method($sql);
             $req->setFetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db] );
@@ -58,7 +58,7 @@ abstract class Model
         }
     }
 
-    public function update(int $id, array $data)
+    public function update(int $id, array $data, ?array $relations = null)
     {
         $sqlRequestPart = "";
         $i = 1; 

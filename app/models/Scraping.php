@@ -19,7 +19,7 @@ class Scraping extends Model
 
     /**
      * Get the value of id
-     */ 
+     */
     public function getId()
     {
         return $this->id;
@@ -29,7 +29,7 @@ class Scraping extends Model
      * Set the value of id
      *
      * @return  self
-     */ 
+     */
     public function setId($id)
     {
         $this->id = $id;
@@ -39,7 +39,7 @@ class Scraping extends Model
 
     /**
      * Get the value of title
-     */ 
+     */
     public function getTitle()
     {
         return $this->title;
@@ -49,7 +49,7 @@ class Scraping extends Model
      * Set the value of title
      *
      * @return  self
-     */ 
+     */
     public function setTitle($title)
     {
         $this->title = $title;
@@ -59,7 +59,7 @@ class Scraping extends Model
 
     /**
      * Get the value of url
-     */ 
+     */
     public function getUrl()
     {
         return $this->url;
@@ -69,7 +69,7 @@ class Scraping extends Model
      * Set the value of url
      *
      * @return  self
-     */ 
+     */
     public function setUrl($url)
     {
         $this->url = $url;
@@ -79,7 +79,7 @@ class Scraping extends Model
 
     /**
      * Get the value of path
-     */ 
+     */
     public function getPath()
     {
         return $this->path;
@@ -89,7 +89,7 @@ class Scraping extends Model
      * Set the value of path
      *
      * @return  self
-     */ 
+     */
     public function setPath($path)
     {
         $this->path = $path;
@@ -99,7 +99,7 @@ class Scraping extends Model
 
     /**
      * Get the value of period
-     */ 
+     */
     public function getPeriod()
     {
         return $this->period;
@@ -109,7 +109,7 @@ class Scraping extends Model
      * Set the value of period
      *
      * @return  self
-     */ 
+     */
     public function setPeriod($period)
     {
         $this->period = $period;
@@ -119,7 +119,7 @@ class Scraping extends Model
 
     /**
      * Get the value of created_at
-     */ 
+     */
     public function getCreatedAt()
     {
         $date = new DateTime($this->created_at);
@@ -130,7 +130,7 @@ class Scraping extends Model
      * Set the value of created_at
      *
      * @return  self
-     */ 
+     */
     public function setCreated_at($created_at)
     {
         $this->created_at = $created_at;
@@ -146,5 +146,22 @@ class Scraping extends Model
         WHERE s.id = ?';
 
         return $this->query($sql, [$this->getId()]);
+    }
+
+    public function update(int $id, array $data, ?array $relations = null)
+    {
+        parent::update($id, $data);
+
+        $stmt = $this->db->getPDO()->prepare("DELETE FROM scraping_category WHERE scraping_id = ?");
+        $res = $stmt->execute([$id]);
+
+        foreach ($relations as $categoryId) {
+            $stmt = $this->db->getPDO()->prepare("INSERT scraping_category (scraping_id, category_id) VALUES (?, ?) ");
+            $stmt->execute([$id, $categoryId]);
+        }
+
+        if($res){
+            return true;
+        }
     }
 }
