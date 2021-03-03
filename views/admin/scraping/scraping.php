@@ -1,5 +1,7 @@
 <h1>Administration des scraps</h1>
 
+<a href="/projet-CDA/scrap/public/admin/scraping/new/" class="btn btn-primary my-3">Nouveau scrap</a>
+
 <table class="table">
     <thead>
         <tr>

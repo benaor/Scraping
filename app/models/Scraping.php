@@ -7,17 +7,15 @@ use DateTime;
 class Scraping extends Model
 {
     protected $table = 'scraping';
-    private $id;
-    private $title;
-    private $category;
-    private $url;
-    private $path;
-    private $period;
-    private $created_at;
-
-
-
-    /**
+    public $id;
+    public $title;
+    public $category;
+    public $url;
+    public $path;
+    public $period;
+    public $created_at;
+    
+    /*
      * Get the value of id
      */
     public function getId()
@@ -148,6 +146,20 @@ class Scraping extends Model
         return $this->query($sql, [$this->getId()]);
     }
 
+    public function create(array $data, ?array $relations = null)
+    {
+        parent::create($data);
+
+        $id = $this->db->getPDO()->lastInsertId();
+
+        foreach ($relations as $categoryId) {
+            $stmt = $this->db->getPDO()->prepare("INSERT scraping_category (scraping_id, category_id) VALUES (?, ?) ");
+            $stmt->execute([$id, $categoryId]);
+        }
+
+        return true; 
+    }
+
     public function update(int $id, array $data, ?array $relations = null)
     {
         parent::update($id, $data);
@@ -160,7 +172,7 @@ class Scraping extends Model
             $stmt->execute([$id, $categoryId]);
         }
 
-        if($res){
+        if ($res) {
             return true;
         }
     }

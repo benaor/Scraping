@@ -20,7 +20,7 @@ class AdminScrapController extends Controller {
         $scrap = (new Scraping($this->getDb()))->findByid($id);
         $categories = (new Category($this->getDb()))->findAll();
 
-        return $this->view("admin.scraping.edit", compact("scrap", "categories"));
+        return $this->view("admin.scraping.form", compact("scrap", "categories"));
     }
 
     public function update(int $id)
@@ -29,7 +29,7 @@ class AdminScrapController extends Controller {
 
         $categories = array_pop($_POST); 
 
-        $res = $scrap->update($id, $_POST, $categories);  
+        $res = $scrap->update($id, $_POST, $categories);
 
         if($res === true){ 
             return header('location: /projet-CDA/scrap/public/admin/scraping');
@@ -45,4 +45,24 @@ class AdminScrapController extends Controller {
             return header('location: /projet-CDA/scrap/public/admin/scraping');
         }
     }
+
+    public function new(){
+        $categories = (new Category($this->getDb()))->findAll();
+
+        return $this->view("admin.scraping.form", compact('categories'));
+    }
+
+    public function newScrap(){
+
+        $scrap = new Scraping($this->getDb());
+
+        $categories = array_pop($_POST);
+
+        $res = $scrap->create($_POST, $categories);
+
+        if($res === true){ 
+            return header('location: /projet-CDA/scrap/public/admin/scraping');
+        }
+    }
+
 }
