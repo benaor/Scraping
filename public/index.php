@@ -23,11 +23,14 @@ $router->get('/category/:id', 'ScrapingController@category');
 $router->get('/admin/scraping', 'AdminScrapController@scraping');
 $router->get('/admin/scraping/edit/:id', 'AdminScrapController@edit');
 $router->get('/admin/scraping/new', 'AdminScrapController@new');
+$router->get('/login', 'UserController@login');
+$router->get('/logout', 'UserController@logout');
 
 //Post
 $router->post('/admin/scraping/edit/:id', 'AdminScrapController@update');
 $router->post('/admin/scraping/delete/:id', 'AdminScrapController@delete');
 $router->post('/admin/scraping/new', 'AdminScrapController@newScrap');
+$router->post('/login', 'UserController@loginPost');
 
 try {
     $router->run();

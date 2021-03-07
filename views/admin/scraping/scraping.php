@@ -1,5 +1,9 @@
 <h1>Administration des scraps</h1>
 
+<?php if (isset($_GET['success'])) : ?>
+    <div class="alert alert-success">Vous êtes connecté</div>
+<?php endif ?>
+
 <a href="/projet-CDA/scrap/public/admin/scraping/new/" class="btn btn-primary my-3">Nouveau scrap</a>
 
 <table class="table">
@@ -24,7 +28,7 @@
                     <form action="/projet-CDA/scrap/public/admin/scraping/delete/<?= $scrap->getId() ?>" method="POST" class="d-inline">
                         <button type="submit" class="btn btn-danger">Supprimer</button>
                     </form>
-                </td> 
+                </td>
             </tr>
 
         <?php } ?>
