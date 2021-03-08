@@ -9,6 +9,8 @@ class ScrapingController extends Controller {
 
     public function home()
     { 
+        if($_SESSION) return header('location: /projet-CDA/scrap/public/scrap');
+
         return $this->view('scraping.home');
     }
 
@@ -16,7 +18,7 @@ class ScrapingController extends Controller {
     { 
         return $this->view('scraping.scraping');
     }
- 
+
     //Correspond a l'index
     public function history(){
         $data = new Scraping($this->getDb());

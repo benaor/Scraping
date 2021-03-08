@@ -18,7 +18,8 @@ class UserController extends Controller
 
         if (password_verify($_POST['password'], $user->password)) {
             $_SESSION['auth'] = (int) $user->admin;
-            return header('location: /projet-CDA/scrap/public/admin/scraping?success=true');
+
+            return ($user->admin === "1") ? header('location: /projet-CDA/scrap/public/admin/scraping?success=true') : header('location: /projet-CDA/scrap/public/scrap?success=true');
         } else {
             return header('location: /projet-CDA/scrap/public/login?error=1');
         }

@@ -1,37 +1,42 @@
-<h1> S'inscrire</h1>
+<div class="jumbotron my-5 col-8 mx-auto p-2 pb-3">
 
-<?php if (isset($_GET['success'])) : ?>
-    <div class="alert alert-success">Vous êtes maintenant inscrit</div>
-<?php endif ?>
+    <h1 class="text-center my-3"> S'inscrire</h1>
 
-<form action="/projet-CDA/scrap/public/register" class="form-group col-6 m-auto" method="POST">
+    <?php if (isset($_GET['success'])) : ?>
+        <div class="alert alert-success">Vous êtes maintenant inscrit</div>
+    <?php endif ?>
 
-    <div class="my-2">
-        <label for="firstName">FirstName</label>
-        <input type="text" name="firstName" class="form-control" id="firstName">
-    </div>
+    <form action="/projet-CDA/scrap/public/register" class="form-group col-7 m-auto" method="POST">
 
-    <div class="my-2">
-        <label for="lastName">LastName</label>
-        <input type="text" name="lastName" class="form-control" id="lastName">
-    </div>
+        <div class="my-2">
+            <label for="firstName">FirstName</label>
+            <input type="text" name="firstName" class="form-control" id="firstName">
+        </div>
 
-    <div class="my-2">
-        <label for="email">email Adress</label>
-        <input type="email" name="email" class="form-control" id="email">
-    </div>
+        <div class="my-2">
+            <label for="lastName">LastName</label>
+            <input type="text" name="lastName" class="form-control" id="lastName">
+        </div>
 
-    <div class="my-2">
-        <label for="password">Password</label>
-        <input type="password" name="password" class="form-control" id="password">
-    </div>
+        <div class="my-2">
+            <label for="email">email Adress</label>
+            <input type="email" name="email" class="form-control" id="email">
+        </div>
 
-    <div class="my-2">
-        <label for="passwordConfirm">Password Confirm</label>
-        <input type="password" name="passwordConfirm" class="form-control" id="passwordConfirm">
-    </div>
+        <div class="my-2">
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control" id="password">
+        </div>
 
-    <input type="submit" value="Inscription" class="btn btn-success my-3 w-100">
+        <div class="my-2">
+            <label for="passwordConfirm">Password Confirm</label>
+            <input type="password" name="passwordConfirm" class="form-control" id="passwordConfirm">
+        </div>
 
-    <?php if (!empty($_GET['error'])) echo '<p class="alert alert-danger text-center"> une erreur est survenue </p>'; ?>
-</form>
+        <input type="submit" value="Inscription" class="btn btn-success my-3 w-100">
+
+        <?php if (!empty($_GET['error'])) echo '<p class="alert alert-danger text-center"> une erreur est survenue </p>'; ?>
+    </form>
+
+
+</div>
